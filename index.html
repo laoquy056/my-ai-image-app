@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tải lên và Xử lý Ảnh</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        input[type="file"] {
+            display: block;
+            margin: 10px auto;
+        }
+        input[type="submit"], button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #555;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover, button:hover {
+            background-color: #444;
+        }
+        label {
+            display: block;
+            margin: 5px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Tải lên và Xử lý Ảnh</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label for="input_files">Thư mục đầu vào:</label>
+        <input type="file" id="input_files" name="input_files" multiple>
+        <label for="output_folder">Thư mục đầu ra:</label>
+        <input type="text" id="output_folder" name="output_folder" placeholder="Chọn thư mục đầu ra" readonly>
+        <input type="file" webkitdirectory directory multiple id="select_output_folder" style="display: none;">
+        <button type="button" onclick="document.getElementById('select_output_folder').click()">Chọn Thư mục</button>
+        <label><input type="checkbox" name="draw_boxes"> Vẽ hộp</label>
+        <label><input type="checkbox" name="show_labels"> Hiển thị nhãn</label>
+        <input type="submit" value="Xử lý Ảnh">
+    </form>
+</div>
+<script>
+    document.getElementById('select_output_folder').addEventListener('change', function(event) {
+        var fullPath = this.files[0].webkitRelativePath.split('/')[0];
+        document.getElementById('output_folder').value = fullPath;
+    });
+</script>
+</body>
+</html>
