@@ -4,7 +4,6 @@ import cv2
 import psycopg2
 from werkzeug.utils import secure_filename
 from inference_sdk import InferenceHTTPClient
-from urllib.parse import quote  # Use quote from urllib.parse
 
 app = Flask(__name__)
 
