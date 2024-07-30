@@ -2,22 +2,23 @@ import os
 from flask import Flask, request, render_template, redirect, url_for
 import cv2
 import psycopg2
-from werkzeug.urls import quote
+from werkzeug.utils import secure_filename
 from inference_sdk import InferenceHTTPClient
+from urllib.parse import quote  # Thay đổi dòng này
 
 app = Flask(__name__)
 
 CLIENT = InferenceHTTPClient(
     api_url="https://detect.roboflow.com",
-    api_key=os.environ.get("lD811vMk13RcNWRNEBw4")
+    api_key="lD811vMk13RcNWRNEBw4"
 )
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
+DATABASE_URL = "ID811vMk13RcNWRNEBw4"
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = conn.cursor()
 
 UPLOAD_FOLDER = 'uploads'
-BASE_OUTPUT_FOLDER = '/Users/hainguyen/Desktop'  # Adjust base output folder as necessary
+BASE_OUTPUT_FOLDER = '/Users/hainguyen/Desktop'  # Thay đổi thư mục gốc nếu cần
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
