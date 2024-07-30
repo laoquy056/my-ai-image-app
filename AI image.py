@@ -8,12 +8,14 @@ from urllib.parse import quote  # Thay đổi dòng này
 
 app = Flask(__name__)
 
+# API URL và API key của Roboflow
 CLIENT = InferenceHTTPClient(
     api_url="https://detect.roboflow.com",
     api_key="lD811vMk13RcNWRNEBw4"
 )
 
-DATABASE_URL = "ID811vMk13RcNWRNEBw4"
+# DATABASE_URL của Heroku
+DATABASE_URL = os.getenv("DATABASE_URL")
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = conn.cursor()
 
