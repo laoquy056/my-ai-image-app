@@ -9,10 +9,10 @@ app = Flask(__name__)
 
 CLIENT = InferenceHTTPClient(
     api_url="https://detect.roboflow.com",
-    api_key="lD811vMk13RcNWRNEBw4"
+    api_key=os.environ.get("lD811vMk13RcNWRNEBw4")
 )
 
-DATABASE_URL = "ID811vMk13RcNWRNEBw4"
+DATABASE_URL = os.environ.get("DATABASE_URL")
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = conn.cursor()
 
