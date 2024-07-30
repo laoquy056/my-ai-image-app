@@ -14,7 +14,7 @@ CLIENT = InferenceHTTPClient(
 )
 
 # Heroku DATABASE_URL
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.getenv("postgres://uakqc45e4manqr:pb3aef762040ee7b41b1cfef3104a135ff75e9aea3936cf9ee8b7b956a02145a0@cd5gks8n4kb20g.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d312csom8bnqoo")
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = conn.cursor()
 
