@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, render_template, redirect, url_for
 import cv2
 import psycopg2
-from werkzeug.utils import secure_filename
+from werkzeug.urls import quote
 from inference_sdk import InferenceHTTPClient
 
 app = Flask(__name__)
