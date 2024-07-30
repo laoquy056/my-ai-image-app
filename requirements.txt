@@ -1,3 +1,5 @@
 Flask==2.0.1
-requests==2.25.1
-# Thêm các gói khác bạn cần
+psycopg2==2.9.1
+opencv-python==4.5.3.56
+inference_sdk==0.0.5
+werkzeug==2.0.1
