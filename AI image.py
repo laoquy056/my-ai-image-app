@@ -15,14 +15,11 @@ CLIENT = InferenceHTTPClient(
 
 # Heroku DATABASE_URL
 DATABASE_URL = os.getenv("DATABASE_URL")
-if DATABASE_URL is None:
-    raise ValueError("No DATABASE_URL environment variable set")
-
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = conn.cursor()
 
 UPLOAD_FOLDER = 'uploads'
-BASE_OUTPUT_FOLDER = '/Users/hainguyen/Desktop'
+BASE_OUTPUT_FOLDER = '/Users/hainguyen/Desktop'  # Change the base folder if needed
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
