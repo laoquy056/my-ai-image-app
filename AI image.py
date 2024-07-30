@@ -4,30 +4,30 @@ import cv2
 import psycopg2
 from werkzeug.utils import secure_filename
 from inference_sdk import InferenceHTTPClient
-from urllib.parse import quote  # Sử dụng quote từ urllib.parse
+from urllib.parse import quote  # Use quote from urllib.parse
 
 app = Flask(__name__)
 
-# API URL và API key của Roboflow
+# API URL and API key for Roboflow
 CLIENT = InferenceHTTPClient(
     api_url="https://detect.roboflow.com",
     api_key="lD811vMk13RcNWRNEBw4"
 )
 
-# DATABASE_URL của Heroku
+# Heroku DATABASE_URL
 DATABASE_URL = os.getenv("DATABASE_URL")
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = conn.cursor()
 
 UPLOAD_FOLDER = 'uploads'
-BASE_OUTPUT_FOLDER = '/Users/hainguyen/Desktop'  # Thay đổi thư mục gốc nếu cần
+BASE_OUTPUT_FOLDER = '/Users/hainguyen/Desktop'  # Change the base folder if needed
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Tạo bảng nếu chưa tồn tại
+# Create table if it doesn't exist
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS images (
         id SERIAL PRIMARY KEY,
