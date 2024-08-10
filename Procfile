@@ -1,1 +1,2 @@
-web: python "AI image.py"
+web: python AI_image.py
+
